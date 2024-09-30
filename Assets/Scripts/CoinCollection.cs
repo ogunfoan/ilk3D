@@ -15,8 +15,17 @@ public class CoinCollection : MonoBehaviour
     {
         if (other.gameObject.CompareTag("coin"))
         {
-         Destroy(other.gameObject);
+         //Destroy(other.gameObject);
+         other.gameObject.SetActive(false); // görünürlüğünü kapattık
          _audioSource.Play();
+         StartCoroutine(Spawn(other.gameObject));
         }
     }
+
+    IEnumerator Spawn(GameObject gameObject)
+    {
+        yield return new WaitForSeconds(100);
+        gameObject.SetActive(true);
+    }
+    
 }
