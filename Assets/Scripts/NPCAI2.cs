@@ -92,6 +92,10 @@ public class NPCAI2 : MonoBehaviour
         transform.LookAt(_player);
         if (!alreadyAttacked)
         {
+            Rigidbody rb = Instantiate(sphere, transform.position, Quaternion.identity).GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * 25f, ForceMode.Impulse );
+            rb.AddForce(transform.up* 7f, ForceMode.Impulse);
+            Invoke(nameof(ResetAttack), timeBetweenAttacks);
             alreadyAttacked = true;
         }
     }
