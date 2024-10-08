@@ -8,6 +8,7 @@ using MusicFilesNM;
 
 public class PowerUp : MonoBehaviour
 {
+  [SerializeField] private GameObject PokerUp;
   private GameObject _music;
   private ThirdPersonController _thirdPersonController;
 
@@ -22,7 +23,7 @@ public class PowerUp : MonoBehaviour
   {
     if (other.gameObject.CompareTag("PowerUp"))
     {
-      
+      PokerUp.SetActive(true);
       _thirdPersonController.SprintSpeed = 10f;
       Invoke("BacktoNormal", 3f);
     }
@@ -31,6 +32,7 @@ public class PowerUp : MonoBehaviour
 
   private void BacktoNormal()
   {
+    PokerUp.SetActive(false);
     _thirdPersonController.SprintSpeed = 5.33f;
   }
   
